@@ -19,7 +19,7 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
-    // SIGN UP
+    
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody User user) {
         boolean success = userService.registerUser(user);
@@ -30,7 +30,7 @@ public class AuthController {
         }
     }
 
-    // SIGN IN
+  
     @PostMapping("/signin")
     public ResponseEntity<?> signin(@RequestBody Map<String, String> data) {
         String email = data.get("email");
