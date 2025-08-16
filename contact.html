@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact | ZENTRADE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #caf0f8, #ade8f4);
+      color: #2c3e50;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .main-header {
+      background: linear-gradient(90deg, #0077b6, #00b4d8);
+      padding: 20px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      background-color: #023e8a;
+    }
+
+    .contact-section {
+      padding: 80px 0;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .hero-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .hero-text {
+      text-align: center;
+      max-width: 700px;
+      animation: slideInUp 1s ease-out forwards;
+    }
+
+    .hero-text h2 {
+      font-size: 40px;
+      color: #03045e;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .contact-form {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 14px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #00b4d8;
+      outline: none;
+    }
+
+    .contact-form button {
+      padding: 14px;
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #023e8a;
+    }
+
+    footer {
+      background-color: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+
+    @keyframes slideInUp {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="container nav-container">
+      <h1 class="logo">ZENTRADE</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="store.html">Store</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="contact-section">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h2>Contact Us</h2>
+        <p>We’re here to assist you. Get in touch with our support or vendor partnership team.</p>
+
+        <form class="contact-form" id="contactForm">
+          <input type="text" id="name" placeholder="Your Name" required />
+          <input type="email" id="email" placeholder="Your Email" required />
+          <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2025 ZENTRADE. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      fetch("http://localhost:8081/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message })
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        alert("Message sent successfully!");
+        document.getElementById("contactForm").reset();
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("Something went wrong. Please try again later.");
+      });
+    });
+  </script>
+</body>
+</html>

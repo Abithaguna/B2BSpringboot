@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us | ZENTRADE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #e0f7ff, #f9fcff);
+      color: #2c3e50;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .main-header {
+      background: linear-gradient(90deg, #0077b6, #00b4d8);
+      padding: 20px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      background-color: #023e8a;
+    }
+
+    .about-section {
+      background: linear-gradient(to right, #caf0f8, #ade8f4); /* matched index.html */
+      padding: 80px 0;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .hero-text {
+      flex: 1;
+      animation: slideInLeft 1s ease-out forwards;
+    }
+
+    .hero-text h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: #03045e;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+      animation: slideInRight 1s ease-out forwards;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 12px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-image img:hover {
+      transform: scale(1.03);
+    }
+
+    footer {
+      background-color: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+
+    @keyframes slideInLeft {
+      0% { opacity: 0; transform: translateX(-50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      0% { opacity: 0; transform: translateX(50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="container nav-container">
+      <h1 class="logo">ZENTRADE</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="store.html">Store</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="about-section">
+    <div class="container hero-content">
+      <div class="hero-image">
+        <img src="./image/aboutb2b.jpg" alt="About ZENTRADE">
+      </div>
+      <div class="hero-text">
+        <h2>About Our Platform</h2>
+        <p>
+          At ZENTRADE, we are redefining the way businesses connect and collaborate. As a trusted B2B vendor portal, we empower enterprises to streamline their procurement process by connecting them with verified suppliers across a wide range of industries.
+        </p>
+        <h2>Our Mission</h2>
+        <p>
+         To simplify and digitize B2B trade by providing a secure, efficient, and transparent platform for businesses to discover, negotiate, and transact with trusted vendors.
+        </p>
+        <h2>What We Do</h2>
+        <p>✅ Trusted network of pre-screened suppliers</p>
+        <p>✅ User-friendly dashboard with powerful analytics</p>
+        <p>✅ End-to-end procurement lifecycle management</p>
+        <p>✅ 24/7 support from our dedicated trade experts</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2025 ZENTRADE. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

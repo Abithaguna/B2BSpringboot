@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Details | ZENTRADE</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f9ff;
+      color: #333;
+    }
+
+    header {
+      background-color: #0077b6;
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .go-back {
+      color: white;
+      text-decoration: none;
+      background-color: #023e8a;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .go-back:hover {
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    h2 {
+      margin-top: 20px;
+    }
+
+    .description {
+      margin: 15px 0;
+      font-size: 16px;
+    }
+
+    .price, .total {
+      font-size: 20px;
+      font-weight: bold;
+      color: #0077b6;
+      margin: 10px 0;
+    }
+
+    .quantity-input {
+      margin: 15px 0;
+    }
+
+    input[type="number"] {
+      padding: 8px;
+      width: 60px;
+      margin-left: 10px;
+    }
+
+    button {
+      background-color: #0077b6;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #0077b6;
+      color: white;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="store.html" class="go-back">← Go Back</a>
+  <h1>ZENTRADE Material Details</h1>
+  <div></div> 
+</header>
+
+<div class="container">
+  <img id="materialImage" src="" alt="Material">
+  <h2 id="materialName">Material Name</h2>
+  <p class="description" id="materialDescription">Description about the product will appear here.</p>
+  <p class="price" id="materialPrice">Price: ₹0</p>
+
+  <div class="quantity-input">
+    Quantity:
+    <input type="number" id="quantity" min="1" value="1" onchange="updateTotal()">
+  </div>
+
+  <p class="total" id="materialTotal">Total: ₹0</p>
+
+  <button onclick="buyNow()">Buy Now</button>
+</div>
+
+<footer>
+  &copy; 2025 ZENTRADE. All rights reserved.
+</footer>
+
+<script>
+  const materialDetails = {
+    "Steel": { image: "./image/steel.png", description: "High tensile strength alloy used in construction.", price: 5500 },
+    "Cement": { image: "./image/cement.png", description: "Binding material used in concrete and masonry.", price: 350 },
+    "Paint": { image: "./image/paint.png", description: "Protective and decorative wall coating.", price: 1200 },
+    "PVC Pipes": { image: "./image/pipe.png", description: "Lightweight, durable pipes for plumbing.", price: 90 },
+    "Electricals": { image: "./image/electrical.png", description: "Wires, switches, and panels for electricity.", price: 15 },
+    "Bricks": { image: "./image/brick.png", description: "Solid clay bricks for walls and pavements.", price: 8 },
+    "Tiles": { image: "./image/tiles.png", description: "Glazed ceramic tiles for floors and walls.", price: 45 },
+    "Sand": { image: "./image/sand.png", description: "Natural river sand for building.", price: 1200 },
+    "Glass Sheets": { image: "./image/glass_sheet.png", description: "Clear or tinted glass sheets.", price: 250 },
+    "Wood": { image: "./image/wood.png", description: "Timber used for furniture and framework.", price: 850 },
+    "Nails and Screws": { image: "./image/nails.png", description: "Fasteners used in construction.", price: 5 },
+    "Plumbing Fixtures": { image: "./image/plumbing.png", description: "Taps, valves, and bathroom fittings.", price: 2000 },
+    "Adhesives": { image: "./image/adhesive.png", description: "Glues and bonding agents.", price: 180 },
+    "Roofing Sheets": { image: "./image/roof.png", description: "Corrugated sheets for roof protection.", price: 250 },
+    "Switches and Boards": { image: "./image/switch.png", description: "Electrical switches and distribution boards.", price: 300 },
+    "Plywood": { image: "./image/plywood.png", description: "Engineered wood sheets for interiors.", price: 1200 },
+    "Gravel": { image: "./image/gravel.png", description: "Crushed rock used in concrete mixes.", price: 1000 },
+    "Lighting Equipment": { image: "./image/light.png", description: "Bulbs, LEDs, and lighting fixtures.", price: 500 },
+    "Tools and Hardware": { image: "./image/tools.png", description: "Construction tools and fasteners.", price: 700 },
+    "Insulation Material": { image: "./image/insulation.png", description: "Material to reduce heat transfer.", price: 900 }
+  };
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const item = urlParams.get("item");
+
+  if (item && materialDetails[item]) {
+    const details = materialDetails[item];
+    document.getElementById("materialName").innerText = item;
+    document.getElementById("materialImage").src = details.image;
+    document.getElementById("materialImage").alt = item;
+    document.getElementById("materialDescription").innerText = details.description;
+    document.getElementById("materialPrice").innerText = `Price: ₹${details.price}`;
+    updateTotal();
+  }
+
+  function updateTotal() {
+    const qty = parseInt(document.getElementById("quantity").value);
+    const price = materialDetails[item].price;
+    document.getElementById("materialTotal").innerText = `Total: ₹${price * qty}`;
+  }
+
+ function buyNow() {
+  
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (!user) {
+    alert("You must be signed in to buy. Redirecting to sign in...");
+    window.location.href = "signin.html";
+    return;
+  }
+
+  const qty = parseInt(document.getElementById("quantity").value);
+  if (!qty || qty <= 0) {
+    alert("Please enter a valid quantity.");
+    return;
+  }
+
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const product = materialDetails[item];
+
+  const existing = cart.find(p => p.name === item);
+  if (existing) {
+    existing.quantity += qty;
+  } else {
+    cart.push({
+      name: item,
+      image: product.image,
+      price: product.price,
+      quantity: qty
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  window.location.href = "cart.html";
+}
+
+</script>
+
+</body>
+</html>

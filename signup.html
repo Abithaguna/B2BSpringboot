@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up | ZENTRADE</title>
+  <style>
+    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e3f6fc;
+    }
+
+    header {
+      background-color: #0077b6;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 450px;
+      margin: 80px auto;
+      background-color: #ffffff;
+      padding: 40px 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #0077b6;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #0077b6;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005f8f;
+    }
+
+    .signin-link {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .signin-link a {
+      color: #0077b6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .signin-link a:hover {
+      text-decoration: underline;
+    }
+
+    nav a:active , nav a:hover {
+      background-color: #023e8a;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">ZENTRADE</div>
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Create Your Account</h2>
+    <form id="signupForm">
+      <input type="text" name="fullname" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <input type="password" name="confirm" placeholder="Confirm Password" required />
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="signin-link">
+      Already have an account? <a href="signin.html">Sign In</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault(); 
+
+      const fullname = this.fullname.value;
+      const email = this.email.value;
+      const password = this.password.value;
+      const confirm = this.confirm.value;
+
+      if (password !== confirm) {
+        alert("Passwords do not match.");
+        return;
+      }
+
+      fetch("http://localhost:8081/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: fullname,
+          email: email,
+          password: password
+        })
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("Signup successful! Redirecting to Sign In...");
+          window.location.href = "signin.html";
+        } else {
+          return response.text().then(text => { throw new Error(text); });
+        }
+      })
+      .catch(error => {
+        console.error("Error during signup:", error);
+        alert("Signup failed: " + error.message);
+      });
+    });
+  </script>
+</body>
+</html>

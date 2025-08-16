@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Store | ZENTRADE</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e9f7fb;
+      color: #2c3e50;
+    }
+
+    header {
+      background-color: #0077b6;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    header .left-links,
+    header .right-links {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    header h1 {
+      margin: 0 30px;
+      font-size: 26px;
+    }
+
+    .nav-button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+    }
+
+    .go-back { background-color: #023e8a; }
+    .sign-in { background-color: #38b000; }
+    .sign-up { background-color: #f77f00; }
+
+    .nav-button:hover {
+      opacity: 0.9;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 10px 0;
+      padding: 0 10px;
+      font-size: 18px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #0077b6;
+      color: white;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="left-links">
+    <a href="index.html" class="nav-button go-back">← Go Back</a>
+    <h1>ZENTRADE</h1>
+  </div>
+  <div class="right-links">
+    <a href="signin.html" class="nav-button sign-in">Sign In</a>
+    <a href="signup.html" class="nav-button sign-up">Sign Up</a>
+  </div>
+</header>
+
+<div class="container">
+  <h2 style="text-align:center;">Our Materials</h2>
+  <div class="grid">
+    <a href="details.html?item=Steel" class="card"><img src="./image/steel.png" alt="Steel"><h3>Steel</h3></a>
+    <a href="details.html?item=Cement" class="card"><img src="./image/cement.png" alt="Cement"><h3>Cement</h3></a>
+    <a href="details.html?item=Paint" class="card"><img src="./image/paint.png" alt="Paint"><h3>Paint</h3></a>
+    <a href="details.html?item=PVC Pipes" class="card"><img src="./image/pipe.png" alt="PVC Pipes"><h3>PVC Pipes</h3></a>
+    <a href="details.html?item=Electricals" class="card"><img src="./image/electrical.png" alt="Electricals"><h3>Electricals</h3></a>
+    <a href="details.html?item=Bricks" class="card"><img src="./image/brick.png" alt="Bricks"><h3>Bricks</h3></a>
+    <a href="details.html?item=Tiles" class="card"><img src="./image/tiles.png" alt="Tiles"><h3>Tiles</h3></a>
+    <a href="details.html?item=Sand" class="card"><img src="./image/sand.png" alt="Sand"><h3>Sand</h3></a>
+    <a href="details.html?item=Glass Sheets" class="card"><img src="./image/glass_sheet.png" alt="Glass Sheets"><h3>Glass Sheets</h3></a>
+    <a href="details.html?item=Wood" class="card"><img src="./image/wood.png" alt="Wood"><h3>Wood</h3></a>
+    <a href="details.html?item=Nails and Screws" class="card"><img src="./image/nails.png" alt="Nails & Screws"><h3>Nails & Screws</h3></a>
+    <a href="details.html?item=Plumbing Fixtures" class="card"><img src="./image/plumbing.png" alt="Plumbing Fixtures"><h3>Plumbing Fixtures</h3></a>
+    <a href="details.html?item=Insulation Material" class="card"><img src="./image/insulation.png" alt="Insulation Material"><h3>Insulation Material</h3></a>
+    <a href="details.html?item=Roofing Sheets" class="card"><img src="./image/roof.png" alt="Roofing Sheets"><h3>Roofing Sheets</h3></a>
+    <a href="details.html?item=Switches and Boards" class="card"><img src="./image/switch.png" alt="Switches & Boards"><h3>Switches & Boards</h3></a>
+    <a href="details.html?item=Plywood" class="card"><img src="./image/plywood.png" alt="Plywood"><h3>Plywood</h3></a>
+    <a href="details.html?item=Gravel" class="card"><img src="./image/gravel.png" alt="Gravel"><h3>Gravel</h3></a>
+    <a href="details.html?item=Adhesives" class="card"><img src="./image/adhesive.png" alt="Adhesives"><h3>Adhesives</h3></a>
+    <a href="details.html?item=Lighting Equipment" class="card"><img src="./image/light.png" alt="Lighting Equipment"><h3>Lighting Equipment</h3></a>
+    <a href="details.html?item=Tools and Hardware" class="card"><img src="./image/tools.png" alt="Tools & Hardware"><h3>Tools & Hardware</h3></a>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 ZENTRADE. All rights reserved.
+</footer>
+</body>
+</html>
